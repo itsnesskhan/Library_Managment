@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.util.Optional;
+
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -43,11 +45,14 @@ class StudentServiceTest {
 		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
 
 		// this is not calling
-		Mockito.when(studentService.addStudent(studentDto)).thenReturn(studentDto);
-
+		Mockito.when(studentRepository.save(student)).thenReturn(student);
+		Mockito.when(modelMapper.map(studentDto,Student.class)).thenReturn(student);
+		Mockito.when(modelMapper.map(student,StudentDto.class)).thenReturn(studentDto);
+		
+		Mockito.when(studentRepository.findByEmailOrMobileNumber(student.getEmail(),student.getMobile())).thenReturn(Optional.empty());
 		// here you can see only got called once
 		StudentDto studentResponse = studentService.addStudent(studentDto);
-		System.out.println(studentResponse);
+//		System.out.println(studentResponse);
 
 		assertEquals(studentDto.getFname(), studentResponse.getFname());
 		assertEquals(studentDto.getLname(), studentResponse.getLname());
