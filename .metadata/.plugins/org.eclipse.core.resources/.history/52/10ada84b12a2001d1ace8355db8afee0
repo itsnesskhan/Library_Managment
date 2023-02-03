@@ -1,0 +1,41 @@
+package com.lib.managment.models;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "borrowed_by_db")
+public class BorrowedBy {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer borId;
+	
+	@Column(name = "student_name")
+	private String student;
+	
+	@ManyToOne
+	@JoinColumn(name = "book_id")
+	private Books book;
+	
+	private LocalDate issueDate;
+	
+	private LocalDate returnDate;
+	
+	
+}

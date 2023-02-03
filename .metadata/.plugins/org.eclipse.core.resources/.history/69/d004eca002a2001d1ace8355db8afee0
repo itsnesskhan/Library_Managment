@@ -1,0 +1,18 @@
+package com.lib.managment.models;
+
+import java.time.LocalDate;
+
+public class IssuedBookDetails {
+
+	private Integer issued_book_id;
+	
+	private Student student;
+	
+	private Books book;
+	
+	private LocalDate issueDate;
+	
+	private LocalDate returnDate;
+	
+	
+}

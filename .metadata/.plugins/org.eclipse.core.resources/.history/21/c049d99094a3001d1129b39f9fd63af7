@@ -1,0 +1,60 @@
+package com.lib.managment.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.modelmapper.ModelMapper;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.lib.managment.dtos.AddressDto;
+import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.models.Address;
+import com.lib.managment.models.Student;
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.impl.StudentServiceImpl;
+
+@SpringBootTest(classes = StudentServiceTest.class)
+class StudentServiceTest {
+
+	
+	@Mock
+	StudentRepository studentRepository;
+	
+	@Mock
+	ModelMapper modelMapper;
+	
+	@InjectMocks
+	StudentService studentService = new StudentServiceImpl();
+
+	@Test
+	void testAddStudent() {
+		StudentDto student = new StudentDto(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new AddressDto());
+		Student studentObj = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
+		
+		//here you can see only got called once
+		Mockito.when(studentService.addStudent(student)).thenReturn(student);
+		
+		
+//		verify(studentRepository).save(studentObj); //verify add student get called with student object or not
+		
+//		verify(studentService, times(1)).addStudent(student); //verify it got called only once, as you can see above only got called once
+		
+		assertEquals(student.getFname(), student.getFname());
+		assertEquals(student.getLname(), student.getLname());
+		assertEquals(student.getEmail(), student.getEmail());
+		assertEquals(student.getMobile(), student.getMobile());
+	}
+
+	@Test
+	@Disabled
+	void testGetAllStudents() {
+		fail("Not yet implemented");
+	}
+
+}

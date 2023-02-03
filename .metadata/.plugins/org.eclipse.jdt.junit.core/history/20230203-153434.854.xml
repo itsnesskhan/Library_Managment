@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StudentServiceTest (5)" project="Library_Managment" tests="2" started="2" failures="0" errors="0" ignored="1">
+  <testsuite name="com.lib.managment.service.StudentServiceTest" time="0.061" displayname="StudentServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.service.StudentServiceTest]">
+    <testcase name="testAddStudent" classname="com.lib.managment.service.StudentServiceTest" time="0.057" displayname="testAddStudent()" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.service.StudentServiceTest]/[method:testAddStudent()]"/>
+    <testcase name="testGetAllStudents" classname="com.lib.managment.service.StudentServiceTest" time="0.0" ignored="true" displayname="testGetAllStudents()" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.service.StudentServiceTest]/[method:testGetAllStudents()]"/>
+  </testsuite>
+</testrun>

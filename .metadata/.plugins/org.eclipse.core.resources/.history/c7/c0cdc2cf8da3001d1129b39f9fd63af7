@@ -1,0 +1,50 @@
+package com.lib.managment.service.impl;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.lib.managment.dtos.AddressDto;
+import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.models.Address;
+import com.lib.managment.models.Student;
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.StudentService;
+
+@SpringBootTest(classes = StudentServiceImplTest.class)
+class StudentServiceImplTest {
+	
+	@Mock
+	private StudentRepository studentRepository;
+	
+	@InjectMocks
+	private StudentService studentService;
+
+	@Test
+	void testAddStudent() {
+		StudentDto student = new StudentDto(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new AddressDto());
+		Student studentObj = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
+		Mockito.when(studentService.addStudent(student)).thenReturn(student);
+		
+		verify(studentRepository.save(studentObj), times(1));
+		
+		assertEquals(student.getFname(), student.getFname());
+		assertEquals(student.getLname(), student.getLname());
+		assertEquals(student.getEmail(), student.getEmail());
+		assertEquals(student.getMobile(), student.getMobile());
+		
+		
+	}
+
+	@Test
+	void testGetAllStudents() {
+		fail("Not yet implemented");
+	}
+
+}

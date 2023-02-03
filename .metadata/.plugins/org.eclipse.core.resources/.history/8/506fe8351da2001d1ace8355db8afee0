@@ -1,0 +1,117 @@
+package com.lib.managment.service.impl;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
+
+import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.models.Student;
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.StudentService;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+	@Autowired
+	private StudentRepository studentRepository;
+
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Override
+	public StudentDto addStudent(StudentDto studentDto) {
+		Optional<Student> dbStudent = studentRepository.findByEmailOrMobileNumber(studentDto.getEmail(), studentDto.getMobile());
+
+		if (dbStudent.isPresent()) {
+			throw new RuntimeException("student already exist");
+		}
+		Student student = modelMapper.map(studentDto, Student.class);
+		student = studentRepository.save(student);
+		return modelMapper.map(student, studentDto.getClass());
+	}
+
+	@Override
+	public List<StudentDto> getAllStudents() {
+		List<Student> all = studentRepository.findAll();
+		return Arrays.asList(modelMapper.map(all, StudentDto[].class));
+	}
+
+	@Override
+	public StudentDto getStudentById(Integer sid) {
+		Student student = studentRepository.findById(sid)
+				.orElseThrow(() -> new RuntimeException("Student does not exist with id " + sid));
+		return modelMapper.map(student, StudentDto.class);
+	}
+
+	@Override
+	public StudentDto updateStudent(StudentDto studentDto) {
+		User user = studentRepository.findById(studentDto.getSid())
+				.orElseThrow(() -> new ResourceAccessException("student not exist"));
+
+		LOGGER.info("UserservicesImpl::updateUser::fetched User = {}", user);
+
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setMobileNumber(userDto.getMobileNumber());
+		
+		if (userDto.getProfileUrl()!=null) {
+			user.setProfileUrl(userDto.getProfileUrl());	
+		}
+		user = userRepository.save(user);
+
+		if (!userDto.getAddress().isEmpty() ) {
+			
+			for (AddressDto addressDto : userDto.getAddress()) {
+			
+				LOGGER.info("UserservicesImpl::updateUser::fetching address by user id = {}", userDto.getUid());
+				if (addressDto.getAid()!=null) {
+					Address dbAddress = addressRepository.findByUserUidAndAid(userDto.getUid(), addressDto.getAid());
+					
+					System.out.println(dbAddress+" my response");
+
+					LOGGER.info("UserservicesImpl::updateUser::address by id = {}", dbAddress);
+
+					if (dbAddress!=null) {
+					
+						dbAddress.setStreet(addressDto.getStreet());
+						dbAddress.setCity(addressDto.getCity());
+						dbAddress.setState(addressDto.getState());
+
+						LOGGER.info("UserservicesImpl::updateUser::saving address objects");
+
+						Address address = addressRepository.save(dbAddress);
+						user.getAddress().add(address);	
+					} 
+				}
+				else {
+					LOGGER.info("UserservicesImpl::updateUser::saving new address objects");
+
+					Address address = modelMapper.map(addressDto, Address.class);
+					address.setUser(user);
+					address = addressRepository.save(address);
+					user.getAddress().add(address);
+		
+				}
+			}
+			
+		}else {
+			return (T) ResponseHandler.errorResponseBuilder(Messages.SOMETHING_WENT_WRONG, HttpStatus.BAD_REQUEST);
+		}
+
+		LOGGER.info("UserservicesImpl::updateUser::updating user");
+		user = userRepository.save(user);
+
+		LOGGER.info("UserservicesImpl::updateUser::user after updation == {}", user);
+
+		LOGGER.info("UserservicesImpl::updateUser == END");
+
+		return (T) modelToDto(user);
+		return null;
+	}
+
+}

@@ -1,0 +1,38 @@
+package com.lib.managment.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name = "Books_Db")
+public class Books {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer book_id;
+	
+	private String title;
+	
+	private String price;
+	
+	private String author;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id",referencedColumnName = "cid")
+	private Category category;
+	
+	private Publisher publisher;
+	
+}

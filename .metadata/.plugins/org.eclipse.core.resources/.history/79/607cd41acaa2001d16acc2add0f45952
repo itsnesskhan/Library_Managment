@@ -1,0 +1,13 @@
+package com.lib.managment.service;
+
+import com.lib.managment.dtos.BookDto;
+
+public interface BookService {
+
+	BookDto addBook(BookDto bookDto);
+	
+	BookDto getBooks();
+	
+	BookDto getBookById(Integer bid);
+	
+}

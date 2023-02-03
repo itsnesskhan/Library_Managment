@@ -1,0 +1,41 @@
+package com.lib.managment.service.impl;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.models.Student;
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.StudentService;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+	@Autowired
+	private StudentRepository studentRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@SuppressWarnings("null")
+	@Override
+	public StudentDto addStudent(StudentDto studentDto) {
+		Student student = studentRepository.findByEmailOrMobileNumber(studentDto.getEmail(), studentDto.getMobile());
+		
+		if (student!=null) {
+			throw new RuntimeException("student already exist");
+		}
+		student = modelMapper.map(studentDto, student.getClass());
+		return student;
+	}
+
+	@Override
+	public List<StudentDto> getAllStudents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

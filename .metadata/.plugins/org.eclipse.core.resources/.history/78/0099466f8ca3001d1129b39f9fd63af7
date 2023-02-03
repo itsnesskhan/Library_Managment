@@ -1,0 +1,32 @@
+package com.lib.managment.service.impl;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.StudentService;
+
+@SpringBootTest(classes = StudentServiceImpl.class)
+class StudentServiceImplTest {
+	
+	@Mock
+	private StudentRepository studentRepository;
+	
+	@InjectMocks
+	private StudentService studentService;
+
+	@Test
+	void testAddStudent() {
+		
+	}
+
+	@Test
+	void testGetAllStudents() {
+		fail("Not yet implemented");
+	}
+
+}

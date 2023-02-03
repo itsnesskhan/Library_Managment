@@ -1,0 +1,19 @@
+package com.lib.managment.service;
+
+import java.util.List;
+
+import com.lib.managment.dtos.CategoryDto;
+import com.lib.managment.models.Category;
+
+public interface CatgoryService {
+
+	CategoryDto addCategory(Category categoryDto);
+	
+	List<CategoryDto> getCategories();
+	
+	CategoryDto getCategoryById(Integer id);
+	
+	void deleteCategory(Integer id);
+	
+	
+}

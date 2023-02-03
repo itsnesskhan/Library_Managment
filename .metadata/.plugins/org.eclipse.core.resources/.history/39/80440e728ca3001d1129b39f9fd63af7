@@ -1,0 +1,37 @@
+package com.lib.managment.service.impl;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.models.Address;
+import com.lib.managment.models.Student;
+import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.StudentService;
+
+@SpringBootTest(classes = StudentServiceImpl.class)
+class StudentServiceImplTest {
+	
+	@Mock
+	private StudentRepository studentRepository;
+	
+	@InjectMocks
+	private StudentService studentService;
+
+	@Test
+	void testAddStudent() {
+		Student student = new StudentDto(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
+		Mockito.when(studentService.addStudent(null))
+	}
+
+	@Test
+	void testGetAllStudents() {
+		fail("Not yet implemented");
+	}
+
+}
