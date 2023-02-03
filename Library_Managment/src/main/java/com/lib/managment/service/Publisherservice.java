@@ -2,20 +2,18 @@ package com.lib.managment.service;
 
 import java.util.List;
 
-import com.lib.managment.dtos.CategoryDto;
-import com.lib.managment.models.Category;
+import com.lib.managment.dtos.PublisherDto;
 
 public interface Publisherservice {
 
-	CategoryDto addCategory(CategoryDto categoryDto);
+	PublisherDto addPublisher(PublisherDto PublisherDto);
 	
-	List<CategoryDto> getCategories();
+	List<PublisherDto> getPublishers();
 	
-	CategoryDto getCategoryById(Integer id);
+	PublisherDto getPublisherById(Integer id);
 	
-	CategoryDto updateCategory(CategoryDto categoryDto);
+	PublisherDto updatePublisher(PublisherDto PublisherDto);
 	
-	void deleteCategory(Integer id);
-	
+	void deletePublisher(Integer id);
 	
 }
