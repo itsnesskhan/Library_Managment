@@ -20,8 +20,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import com.lib.managment.dtos.AddressDto;
 import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.helper.RoleEnum;
 import com.lib.managment.models.Address;
 import com.lib.managment.models.Student;
+import com.lib.managment.models.UserRole;
 import com.lib.managment.repository.StudentRepository;
 import com.lib.managment.service.impl.StudentServiceImpl;
 
@@ -42,7 +44,7 @@ class StudentServiceTest {
 		StudentDto studentDto = new StudentDto(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "default.jpg",
 				"0", new AddressDto());
 		
-		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
+		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg",new UserRole(RoleEnum.STUDENT.getRole()), new Address());
 
 		// this is not calling
 		Mockito.when(studentRepository.save(student)).thenReturn(student);

@@ -1,0 +1,22 @@
+
+Š
+java:S1128"RRemove this unused import 'com.fasterxml.jackson.databind.DeserializationFeature'.(ÌòÔ¹üÿÿÿÿ8ßËÖºá0HÖRMINORZ
+CODE_SMELL
+i
+java:S1128"7Remove this unused import 'org.jboss.logging.Messages'.(””¹
+8ßËÖºá0HÍRMINORZ
+CODE_SMELL
+[
+java:S1452G"&Remove usage of generic wildcard type.(Äü½/8ßËÖºá0HØRCRITICALZ
+CODE_SMELL
+‡
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ8ßËÖºá0HÓRMINORZ
+CODE_SMELL
+{
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8ßËÖºá0HÏRMINORZ
+CODE_SMELL
+d
+java:S3655J"3Call "file.isPresent()" before accessing the value.(Òëú…ùÿÿÿÿ8ßËÖºá0HÕRMAJORZBUG
+“
+java:S1128"`Remove this unused import 'org.springframework.web.servlet.support.ServletUriComponentsBuilder'.(™ƒ¹8ßËÖºá0HÑRMINORZ
+CODE_SMELL

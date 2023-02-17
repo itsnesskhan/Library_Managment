@@ -11,8 +11,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.lib.managment.helper.RoleEnum;
 import com.lib.managment.models.Address;
 import com.lib.managment.models.Student;
+import com.lib.managment.models.UserRole;
 
 @SpringBootTest(classes = StudentRepositoryTest.class)
 class StudentRepositoryTest {
@@ -25,7 +27,7 @@ class StudentRepositoryTest {
 	@Test
 	void testFindByEmailOrMobileNumber() {
 		
-		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
+		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg",new UserRole(RoleEnum.STUDENT.getRole()), new Address());
 		Optional.of(student);
 		
 		Mockito.when(studentRepository.findByEmailOrMobileNumber("itsnesskhan@gmail.com", "9713216901")).thenReturn(Optional.of(student));
@@ -37,8 +39,7 @@ class StudentRepositoryTest {
 	
 	@Test
 	void testSaveStudent() {
-		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new Address());
-		
+		Student student = new Student(101, "Nasser", "Khan", "itsnesskhan@gmail.com", "9713216901", "0", "default.jpg", new UserRole(RoleEnum.STUDENT.getRole()), new Address());
 		Mockito.when(studentRepository.save(student)).thenReturn(student);
 		
 		assertEquals(student, studentRepository.save(student));

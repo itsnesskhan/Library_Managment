@@ -42,6 +42,10 @@ public class Student {
 	
 	private String profile="default.jpg";
 	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "role_id", referencedColumnName = "rid", nullable = false)
+	private UserRole role;
+	
 	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.MERGE)
 	@JoinColumn(name = "address_id",referencedColumnName = "address_id", nullable = false)
 	private Address address;

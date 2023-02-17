@@ -1,3 +1,20 @@
 
-}	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(çÒ „ûÿÿÿÿ8Íâ˜½à0HòRMAJORZ
+}	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(çÒ „ûÿÿÿÿ8Íâ˜½à0H’RMAJORZ
+CODE_SMELL
+b
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ8…È±÷å0HRMINORZ
+CODE_SMELL
+€	java:S1160"NRename this field "OTP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çè®Ì8ÿúãðå0HöRMINORZ
+CODE_SMELL
+k	java:S106f"9Replace this use of System.out or System.err by a logger.(ÿ’Á8ÀŠ†÷å0HÝRMAJORZ
+CODE_SMELL
+“
+java:S1128"`Remove this unused import 'org.springframework.web.servlet.support.ServletUriComponentsBuilder'.(™ƒ¹8…È±÷å0HRMINORZ
+CODE_SMELL
+M
+java:S2119ˆ"Save and re-use this "Random".(¼ÝÅf8³Ë¹ðå0HÈRCRITICALZBUG
+”
+java:S1488Œ"`Immediately return this expression instead of assigning it to the temporary variable "mailSend".(÷å¤ý8¬øºðå0HÌRMINORZ
+CODE_SMELL
+Œ	java:S1163"URename this field "UPLOAD_DIR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ·…Çüÿÿÿÿ8êøÍ¯á0H–RMINORZ
 CODE_SMELL

@@ -1,0 +1,22 @@
+
+e
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8“ºßÖâ0HÊRMINORZ
+CODE_SMELL
+–
+java:S1488I"cImmediately return this expression instead of assigning it to the temporary variable "responseDto".(Î¦òë8•ÃÀÕâ0HçRMINORZ
+CODE_SMELL
+r
+java:S1117H"?Rename "modelMapper" which hides the field declared at line 25.(ã´®³8•ÃÀÕâ0HêRMAJORZ
+CODE_SMELL
+w
+java:S1117G"?Rename "modelMapper" which hides the field declared at line 25.(†ö”Âÿÿÿÿÿ8•ÃÀÕâ0HëRMAJORZ
+CODE_SMELL
+‹
+java:S1192,"WDefine a constant instead of duplicating this literal "no book found with id " 3 times.(ëÂÇòûÿÿÿÿHÉRCRITICALZ
+CODE_SMELL
+—
+java:S1488&"dImmediately return this expression instead of assigning it to the temporary variable "bookResponse".(ÌÇÔï8äîÒÕâ0HôRMINORZ
+CODE_SMELL
+x
+java:S1612&"EReplace this lambda with method reference 'this::bookToBookResponse'.(ÌÇÔï8äîÒÕâ0H÷RMINORZ
+CODE_SMELL

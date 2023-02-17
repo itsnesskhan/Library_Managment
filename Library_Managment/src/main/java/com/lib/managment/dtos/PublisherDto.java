@@ -19,5 +19,7 @@ public class PublisherDto {
 	private String lname;
 	
 	private Address address;
+	
+	
 
 }

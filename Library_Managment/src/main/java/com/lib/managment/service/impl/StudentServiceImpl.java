@@ -2,7 +2,9 @@ package com.lib.managment.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.dtos.VarifyOtpRequest;
+import com.lib.managment.helper.ApiResponse;
+import com.lib.managment.helper.RoleEnum;
 import com.lib.managment.models.Student;
+import com.lib.managment.models.UserRole;
 import com.lib.managment.repository.StudentRepository;
+import com.lib.managment.service.EmailService;
 import com.lib.managment.service.FileServices;
 import com.lib.managment.service.StudentService;
 
@@ -33,6 +40,13 @@ public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private FileServices fileServices;
 	
+	@Autowired
+	private EmailService emailService;
+	
+	private StudentDto globalStudentDto;
+	
+	private String OTP;
+	
 	@Value("${file.upload.dir}")
 	private String UPLOAD_DIR;
 
@@ -45,7 +59,13 @@ public class StudentServiceImpl implements StudentService {
 		if (dbStudent.isPresent()) {
 			throw new RuntimeException("student already exist");
 		}
+		UserRole userRole = new UserRole();
+		userRole.setRid(101);
+		userRole.setName(RoleEnum.STUDENT.getRole());
 		Student student = modelMapper.map(studentDto, Student.class);
+		student.setRole(userRole);
+		student.setProfile("default.jpg");
+		student.setBookIssuedCount("0");
 		student = studentRepository.save(student);
 		return modelMapper.map(student, studentDto.getClass());
 	}
@@ -108,6 +128,36 @@ public class StudentServiceImpl implements StudentService {
 			e.printStackTrace();
 		}
 		return studentDto;
+	}
+
+	@Override
+	public boolean registerStudentWithEmailVarification(StudentDto studentDto) {
+		
+		Random random = new Random();
+		Integer otp = random.nextInt(111111, 999999);
+		globalStudentDto = studentDto;
+		OTP = otp.toString();
+		boolean mailSend = emailService.sendEmail("Varification of Email" , "Varification OTP "+ otp, studentDto.getEmail());
+		return mailSend;
+	}
+
+	@Override
+	public ApiResponse varifyOtp(VarifyOtpRequest varifyOtpRequest) {
+		
+		if (OTP.equals(varifyOtpRequest.getOtp()) && globalStudentDto.getEmail().equals(varifyOtpRequest.getEmail())) {
+			Student student = this.modelMapper.map(globalStudentDto, Student.class);
+			UserRole userRole = new UserRole();
+			userRole.setRid(101);
+			userRole.setName(RoleEnum.STUDENT.getRole());
+			student.setRole(userRole);
+			student.setProfile("default.jpg");
+			student.setBookIssuedCount("0");
+			student = studentRepository.save(student);
+			emailService.sendEmail( "Varification Successfull","Successfully! resgistered ", varifyOtpRequest.getEmail());
+			
+			 return new ApiResponse(modelMapper.map(student, StudentDto.class),"Varification Successfull!");
+		}
+		return new ApiResponse(modelMapper.map(globalStudentDto, StudentDto.class),"Varification FAILED, Try again");
 	}
 
 }

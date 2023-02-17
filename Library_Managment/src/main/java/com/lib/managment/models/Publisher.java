@@ -35,4 +35,8 @@ public class Publisher {
 	@OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.MERGE)
 	@JoinColumn(name = "address_id",referencedColumnName = "address_id")
 	private Address address;
+	
+	public String getFullName() {
+		return fname+" "+lname;
+	}
 }

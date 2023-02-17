@@ -1,0 +1,13 @@
+
+Р	java:S116"YRename this field "penalty_amount" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(эЙЉЋш€€€€8іЊ≈ыв0HЖRMINORZ
+CODE_SMELL
+З	java:S116"URename this field "student_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ач÷і8іЊ≈ыв0HДRMINORZ
+CODE_SMELL
+Г	java:S116 "RRename this field "book_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(цўфA8іЊ≈ыв0HЗRMINORZ
+CODE_SMELL
+Ж	java:S116""TRename this field "book_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(О¶°и8іЊ≈ыв0HИRMINORZ
+CODE_SMELL
+}	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ЏсяЗю€€€€HВRMINORZ
+CODE_SMELL
+О	java:S116"WRename this field "student_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ѕмя°э€€€€8іЊ≈ыв0HЕRMINORZ
+CODE_SMELL

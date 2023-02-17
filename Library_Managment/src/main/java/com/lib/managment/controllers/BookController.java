@@ -1,5 +1,9 @@
 package com.lib.managment.controllers;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lib.managment.dtos.BookDto;
+import com.lib.managment.dtos.BookRequestDto;
+import com.lib.managment.dtos.BookResponseDto;
 import com.lib.managment.service.BookService;
 
 @RestController
@@ -26,26 +31,26 @@ public class BookController {
 	private BookService bookService;
 
 	@PostMapping("/save")
-	public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDto){
-		BookDto Book = bookService.addBook(bookDto);
+	public ResponseEntity<BookRequestDto> addBook(@RequestBody BookRequestDto bookDto){
+		BookRequestDto Book = bookService.addBook(bookDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(Book);
 	}
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<BookDto>> getBooks(){
-		List<BookDto> Book = bookService.getBooks();
+	public ResponseEntity<List<BookResponseDto>> getBooks(){
+		List<BookResponseDto> Book = bookService.getBooks();
 		return ResponseEntity.status(HttpStatus.OK).body(Book);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<BookDto> getBookById(@PathVariable Integer id){
-		BookDto Book = bookService.getBookById(id);
+	public ResponseEntity<BookResponseDto> getBookById(@PathVariable Integer id){
+		BookResponseDto Book = bookService.getBookById(id);
 		return ResponseEntity.status(HttpStatus.OK).body(Book);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<BookDto> updateBook(@RequestBody BookDto bookDto){
-		BookDto Book = bookService.updateBook(bookDto);
+	public ResponseEntity<BookResponseDto> updateBook(@RequestBody BookRequestDto bookDto){
+		BookResponseDto Book = bookService.updateBook(bookDto);
 		return ResponseEntity.status(HttpStatus.OK).body(Book);
 	}
 	
@@ -53,5 +58,13 @@ public class BookController {
 	public ResponseEntity<?> deleteBookById(@PathVariable Integer id){
 		bookService.deleteBook(id);
 		return ResponseEntity.status(HttpStatus.OK).body(Map.of("Message","BOOK DELETED SUCCESSFULLY!"));
+	}
+	
+	public static void main(String[] args) {
+//		long days = Duration.between(LocalDate.of(1998, 10, 15), LocalDate.now()).toDays();
+//		System.out.println(days); will alway throw error
+		
+		long days = ChronoUnit.DAYS.between(LocalDate.of(2022, 11, 1), LocalDate.now());
+		System.out.println(days);
 	}
 }

@@ -1,0 +1,14 @@
+
+ƒ	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘¼á±8ó¾Çüâ0H–RMINORZ
+CODE_SMELL
+k	java:S106_"9Replace this use of System.out or System.err by a logger.(„Ú¼ä8˜¤ÿßâ0HRMAJORZ
+CODE_SMELL
+v
+java:S1128"CRemove this unused import 'com.lib.managment.dtos.BookResponseDto'.(ÇÆöú8ıÂÂàâ0HŠRMINORZ
+CODE_SMELL
+–
+java:S1488`"^Immediately return this expression instead of assigning it to the temporary variable "asList".(³Úğìüÿÿÿÿ8ãöàâ0HŒRMINORZ
+CODE_SMELL
+g
+java:S1128"/Remove this unused import 'java.time.Duration'.(ëá¯‰üÿÿÿÿ8ºÆÀıâ0H¶RMINORZ
+CODE_SMELL

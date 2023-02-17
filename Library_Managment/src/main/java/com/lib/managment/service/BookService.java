@@ -2,17 +2,18 @@ package com.lib.managment.service;
 
 import java.util.List;
 
-import com.lib.managment.dtos.BookDto;
+import com.lib.managment.dtos.BookRequestDto;
+import com.lib.managment.dtos.BookResponseDto;
 
 public interface BookService {
 
-	BookDto addBook(BookDto bookDto);
+	BookRequestDto addBook(BookRequestDto bookDto);
 	
-	List<BookDto> getBooks();
+	List<BookResponseDto> getBooks();
 	
-	BookDto getBookById(Integer bid);
+	BookResponseDto getBookById(Integer bid);
 	
-	BookDto updateBook(BookDto bookDto);
+	BookResponseDto updateBook(BookRequestDto bookDto);
 	
 	void deleteBook(Integer bookId);
 	

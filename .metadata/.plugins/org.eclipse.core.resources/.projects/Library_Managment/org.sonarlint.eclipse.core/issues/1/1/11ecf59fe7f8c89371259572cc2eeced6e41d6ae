@@ -1,0 +1,22 @@
+
+g
+java:S1128"/Remove this unused import 'java.time.Duration'.(ëá¯‰üÿÿÿÿ8£ïıâ0H¡RMINORZ
+CODE_SMELL
+k	java:S106D"9Replace this use of System.out or System.err by a logger.(¡õ¦8¡âşüâ0HŸRMAJORZ
+CODE_SMELL
+	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â¶ì¡úÿÿÿÿH›RMINORZ
+CODE_SMELL
+|	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ—™¾HRMINORZ
+CODE_SMELL
+U
+java:S1452:"&Remove usage of generic wildcard type.(ê³¾˜HœRCRITICALZ
+CODE_SMELL
+	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—ßÆùşÿÿÿÿHšRMINORZ
+CODE_SMELL
+	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×íÔÁùÿÿÿÿHRMINORZ
+CODE_SMELL
+s	java:S125@"<This block of commented-out lines of code should be removed.(â€Âúÿÿÿÿ8¹‚¾ıâ0H®RMAJORZ
+CODE_SMELL
+`
+java:S1128"-Remove this unused import 'java.time.Period'.(šÉ¢½8¹‚¾ıâ0H¯RMINORZ
+CODE_SMELL

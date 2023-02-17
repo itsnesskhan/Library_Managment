@@ -23,6 +23,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lib.managment.dtos.StudentDto;
+import com.lib.managment.dtos.VarifyOtpRequest;
+import com.lib.managment.helper.ApiResponse;
 import com.lib.managment.service.StudentService;
 
 @RestController
@@ -31,6 +33,15 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
+	
+	@PostMapping("/register")
+	public ResponseEntity<ApiResponse> registerStudent(@RequestBody StudentDto studentDto){
+		 boolean emailVarification = studentService.registerStudentWithEmailVarification(studentDto);
+		 if (emailVarification) {
+			return ResponseEntity.ok(new ApiResponse(null, "OTP send successfully!"));
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(null, "Please enter a valid email address"));
+	}
 	
 	@PostMapping("/save")
 	public ResponseEntity<StudentDto> addStudent(@RequestBody StudentDto studentDto){
@@ -48,6 +59,12 @@ public class StudentController {
 	public ResponseEntity<StudentDto> getStudentById(@PathVariable Integer id){
 		StudentDto student = studentService.getStudentById(id);
 		return ResponseEntity.status(HttpStatus.OK).body(student);
+	}
+	
+	@PostMapping("/varify")
+	public ResponseEntity<ApiResponse> varifyOtp(@RequestBody VarifyOtpRequest varifyOtpRequest ){
+		ApiResponse varifyOtp = studentService.varifyOtp(varifyOtpRequest);
+		return ResponseEntity.status(HttpStatus.OK).body(varifyOtp);
 	}
 	
 	@PutMapping(path = "/update" ,consumes = {org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE})

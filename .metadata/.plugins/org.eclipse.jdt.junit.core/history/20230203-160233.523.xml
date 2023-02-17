@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="StudentRepositoryTest" project="Library_Managment" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.lib.managment.repository.StudentRepositoryTest" time="0.08" displayname="StudentRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.repository.StudentRepositoryTest]">
-    <testcase name="testSaveStudent" classname="com.lib.managment.repository.StudentRepositoryTest" time="0.07" displayname="testSaveStudent()" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.repository.StudentRepositoryTest]/[method:testSaveStudent()]"/>
-    <testcase name="testFindByEmailOrMobileNumber" classname="com.lib.managment.repository.StudentRepositoryTest" time="0.008" displayname="testFindByEmailOrMobileNumber()" uniqueid="[engine:junit-jupiter]/[class:com.lib.managment.repository.StudentRepositoryTest]/[method:testFindByEmailOrMobileNumber()]"/>
-  </testsuite>
-</testrun>
